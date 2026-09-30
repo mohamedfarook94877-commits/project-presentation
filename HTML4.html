@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SBDMS - Small Business Digital Management Service</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    line-height:1.6;
+    color:#334155;
+    background:#ffffff;
+}
+
+.container{
+    width:90%;
+    max-width:1150px;
+    margin:auto;
+}
+
+/* NAVBAR */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:white;
+    box-shadow:0 2px 12px rgba(0,0,0,0.08);
+}
+
+nav{
+    min-height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:25px;
+    font-weight:bold;
+    color:#0f172a;
+}
+
+.logo-box{
+    width:42px;
+    height:42px;
+    border-radius:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    background:linear-gradient(135deg,#2563eb,#14b8a6);
+}
+
+.nav-links{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#334155;
+    font-weight:bold;
+}
+
+.nav-links a:hover{
+    color:#2563eb;
+}
+
+.menu{
+    display:none;
+    font-size:28px;
+    cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+    background:
+    radial-gradient(circle at 80% 20%,#ccfbf1,transparent 30%),
+    radial-gradient(circle at 10% 80%,#dbeafe,transparent 30%),
+    #f8fafc;
+}
+
+.hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+    padding:80px 0;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 15px;
+    background:#dbeafe;
+    color:#1d4ed8;
+    border-radius:30px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:55px;
+    line-height:1.1;
+    color:#0f172a;
+    margin-bottom:20px;
+}
+
+.hero h1 span{
+    color:#2563eb;
+}
+
+.hero p{
+    color:#64748b;
+    font-size:18px;
+    margin-bottom:30px;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 25px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.primary{
+    background:#2563eb;
+    color:white;
+}
+
+.primary:hover{
+    background:#1d4ed8;
+    transform:translateY(-3px);
+}
+
+.secondary{
+    background:white;
+    color:#0f172a;
+    border:2px solid #e2e8f0;
+}
+
+.secondary:hover{
+    border-color:#2563eb;
+    color:#2563eb;
+}
+
+/* DASHBOARD */
+
+.dashboard{
+    background:white;
+    padding:25px;
+    border-radius:25px;
+    box-shadow:0 20px 50px rgba(15,23,42,0.12);
+}
+
+.dashboard-header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+}
+
+.dashboard-title{
+    font-weight:bold;
+    color:#0f172a;
+    font-size:20px;
+}
+
+.active{
+    color:#059669;
+    font-weight:bold;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.stat{
+    padding:20px;
+    background:#f8fafc;
+    border-radius:15px;
+}
+
+.stat small{
+    color:#64748b;
+}
+
+.stat h3{
+    font-size:25px;
+    color:#0f172a;
+}
+
+/* GENERAL SECTIONS */
+
+section{
+    padding:90px 0;
+}
+
+.heading{
+    text-align:center;
+    max-width:750px;
+    margin:auto;
+    margin-bottom:50px;
+}
+
+.heading small{
+    color:#2563eb;
+    font-weight:bold;
+    text-transform:uppercase;
+    letter-spacing:2px;
+}
+
+.heading h2{
+    font-size:40px;
+    color:#0f172a;
+    margin:10px 0;
+}
+
+.heading p{
+    color:#64748b;
+}
+
+/* ABOUT */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+}
+
+.card{
+    padding:30px;
+    border:1px solid #e2e8f0;
+    border-radius:20px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 15px 35px rgba(15,23,42,0.10);
+}
+
+.icon{
+    width:55px;
+    height:55px;
+    border-radius:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#dbeafe;
+    font-size:25px;
+    margin-bottom:20px;
+}
+
+.card h3{
+    color:#0f172a;
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#64748b;
+}
+
+/* MISSION */
+
+.mission{
+    background:#0f172a;
+    color:white;
+    text-align:center;
+}
+
+.mission h2{
+    font-size:40px;
+    margin-bottom:20px;
+}
+
+.mission p{
+    max-width:850px;
+    margin:auto;
+    font-size:21px;
+    color:#cbd5e1;
+}
+
+/* OBJECTIVES */
+
+.objectives{
+    background:#f8fafc;
+}
+
+.objective-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.objective{
+    display:flex;
+    align-items:flex-start;
+    gap:15px;
+    background:white;
+    padding:20px;
+    border-radius:15px;
+    border:1px solid #e2e8f0;
+}
+
+.number{
+    min-width:38px;
+    height:38px;
+    border-radius:50%;
+    background:#2563eb;
+    color:white;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+.objective p{
+    font-weight:bold;
+}
+
+/* SERVICES */
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+}
+
+.service{
+    text-align:center;
+    padding:25px 15px;
+    border:1px solid #e2e8f0;
+    border-radius:18px;
+    transition:0.3s;
+}
+
+.service:hover{
+    transform:translateY(-7px);
+    box-shadow:0 15px 30px rgba(0,0,0,0.08);
+}
+
+.service-icon{
+    font-size:35px;
+    margin-bottom:12px;
+}
+
+.service h3{
+    font-size:16px;
+    color:#0f172a;
+}
+
+/* CUSTOMERS */
+
+.customer-section{
+    background:#f8fafc;
+}
+
+.customers{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:12px;
+}
+
+.customer{
+    padding:12px 20px;
+    background:white;
+    border:1px solid #e2e8f0;
+    border-radius:30px;
+    font-weight:bold;
+}
+
+/* VALUE */
+
+.value{
+    text-align:center;
+}
+
+.value-box{
+    max-width:850px;
+    margin:auto;
+    padding:50px 30px;
+    border-radius:25px;
+    background:linear-gradient(135deg,#2563eb,#0f766e);
+    color:white;
+}
+
+.value-box h2{
+    font-size:38px;
+    margin-bottom:15px;
+}
+
+.value-box p{
+    font-size:20px;
+}
+
+/* CONTACT */
+
+.contact{
+    background:#f8fafc;
+}
+
+.contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+}
+
+.contact-info{
+    padding:30px;
+    background:white;
+    border-radius:20px;
+}
+
+.contact-info h3{
+    color:#0f172a;
+    font-size:25px;
+}
+
+.contact-item{
+    margin-top:25px;
+}
+
+.contact-item strong{
+    display:block;
+    color:#0f172a;
+}
+
+.contact-item span{
+    color:#64748b;
+}
+
+form{
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+
+input,
+textarea{
+    width:100%;
+    padding:14px;
+    margin:8px 0 18px;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+    font-size:15px;
+}
+
+textarea{
+    height:130px;
+    resize:none;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+    background:#020617;
+    color:#94a3b8;
+    text-align:center;
+    padding:30px;
+}
+
+footer strong{
+    color:white;
+}
+
+/* ANIMATION */
+
+.fade{
+    opacity:0;
+    transform:translateY(30px);
+    transition:0.8s;
+}
+
+.fade.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+    .hero-grid{
+        grid-template-columns:1fr;
+    }
+
+    .cards{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .services{
+        grid-template-columns:1fr 1fr;
+    }
+
+}
+
+@media(max-width:700px){
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:70px;
+        left:0;
+        width:100%;
+        background:white;
+        flex-direction:column;
+        padding:25px;
+        box-shadow:0 10px 20px rgba(0,0,0,.08);
+    }
+
+    .nav-links.active{
+        display:flex;
+    }
+
+    .menu{
+        display:block;
+    }
+
+    .hero h1{
+        font-size:40px;
+    }
+
+    .cards,
+    .objective-grid,
+    .services,
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    section{
+        padding:65px 0;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<header>
+<div class="container">
+
+<nav>
+
+<a href="#home" class="logo">
+<span class="logo-box">S</span>
+SBDMS
+</a>
+
+<div class="menu" onclick="toggleMenu()">☰</div>
+
+<ul class="nav-links" id="navLinks">
+
+<li><a href="#home">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#services">Services</a></li>
+<li><a href="#customers">Customers</a></li>
+<li><a href="#contact">Contact</a></li>
+
+</ul>
+
+</nav>
+
+</div>
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+<div class="container hero-grid">
+
+<div class="fade">
+
+<div class="badge">
+🚀 Digital Solutions for Small Businesses
+</div>
+
+<h1>
+Make Your Business
+<span>Smarter & Simpler.</span>
+</h1>
+
+<p>
+SBDMS is a service-based startup that helps small businesses
+manage daily activities using simple and affordable digital tools.
+</p>
+
+<div class="buttons">
+
+<a href="#contact" class="btn primary">
+Get Started →
+</a>
+
+<a href="#services" class="btn secondary">
+Our Services
+</a>
+
+</div>
+
+</div>
+
+
+<div class="dashboard fade">
+
+<div class="dashboard-header">
+
+<div>
+<div class="dashboard-title">
+Business Dashboard
+</div>
+
+<small>
+Simple • Organized • Digital
+</small>
+
+</div>
+
+<div class="active">
+● Active
+</div>
+
+</div>
+
+
+<div class="stats">
+
+<div class="stat">
+<small>Sales</small>
+<h3>₹48.5K</h3>
+</div>
+
+<div class="stat">
+<small>Expenses</small>
+<h3>₹12.8K</h3>
+</div>
+
+<div class="stat">
+<small>Customers</small>
+<h3>328</h3>
+</div>
+
+<div class="stat">
+<small>Inventory</small>
+<h3>94%</h3>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section id="about">
+
+<div class="container">
+
+<div class="heading fade">
+
+<small>STARTUP IDEA</small>
+
+<h2>Digital Management Made Simple</h2>
+
+<p>
+SBDMS supports shops, salons, restaurants, clinics, tuition centres,
+small wholesalers and local service providers with affordable digital
+management solutions.
+</p>
+
+</div>
+
+
+<div class="cards">
+
+<div class="card fade">
+
+<div class="icon">📊</div>
+
+<h3>Business Records</h3>
+
+<p>
+Maintain organized records of sales, expenses, customers and inventory.
+</p>
+
+</div>
+
+
+<div class="card fade">
+
+<div class="icon">💻</div>
+
+<h3>Digital Tools</h3>
+
+<p>
+Use simple and affordable digital tools to reduce manual work.
+</p>
+
+</div>
+
+
+<div class="card fade">
+
+<div class="icon">📈</div>
+
+<h3>Business Growth</h3>
+
+<p>
+Understand business performance and improve customer reach.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- MISSION -->
+
+<section class="mission">
+
+<div class="container fade">
+
+<h2>Our Mission</h2>
+
+<p>
+“To empower small businesses with affordable and simple digital
+management solutions that improve efficiency, business visibility
+and sustainable growth.”
+</p>
+
+</div>
+
+</section>
+
+
+<!-- OBJECTIVES -->
+
+<section class="objectives">
+
+<div class="container">
+
+<div class="heading fade">
+
+<small>OBJECTIVES</small>
+
+<h2>Our Business Objectives</h2>
+
+<p>
+Helping small businesses become more organized, efficient and digitally visible.
+</p>
+
+</div>
+
+
+<div class="objective-grid">
+
+
+<div class="objective fade">
+<div class="number">1</div>
+<p>Digitalize small businesses using simple and affordable tools.</p>
+</div>
+
+
+<div class="objective fade">
+<div class="number">2</div>
+<p>Maintain organized records of sales, expenses, customers and inventory.</p>
+</div>
+
+
+<div class="objective fade">
+<div class="number">3</div>
+<p>Promote monthly reports to help owners understand business performance.</p>
+</div>
+
+
+<div class="objective fade">
+<div class="number">4</div>
+<p>Improve customer reach through WhatsApp Business, Google Business Profile and social media.</p>
+</div>
+
+
+<div class="objective fade">
+<div class="number">5</div>
+<p>Reduce manual work and record-keeping errors.</p>
+</div>
+
+
+<div class="objective fade">
+<div class="number">6</div>
+<p>Help business owners make better decisions using Excel and basic dashboards.</p>
+</div>
+
+
+<div class="objective fade">
+<div class="number">7</div>
+<p>Provide affordable digital services suitable for local businesses.</p>
+</div>
+
+
+<div class="objective fade">
+<div class="number">8</div>
+<p>Create employment opportunities for young people with digital and business skills.</p>
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section id="services">
+
+<div class="container">
+
+<div class="heading fade">
+
+<small>KEY SERVICES</small>
+
+<h2>Our Digital Services</h2>
+
+<p>
+Practical digital services designed for small and local businesses.
+</p>
+
+</div>
+
+
+<div class="services">
+
+
+<div class="service fade">
+<div class="service-icon">💰</div>
+<h3>Sales & Expense Management</h3>
+</div>
+
+
+<div class="service fade">
+<div class="service-icon">📦</div>
+<h3>Inventory Management</h3>
+</div>
+
+
+<div class="service fade">
+<div class="service-icon">👥</div>
+<h3>Customer Records</h3>
+</div>
+
+
+<div class="service fade">
+<div class="service-icon">📑</div>
+<h3>Excel Reports</h3>
+</div>
+
+
+<div class="service fade">
+<div class="service-icon">📊</div>
+<h3>Power BI Dashboards</h3>
+</div>
+
+
+<div class="service fade">
+<div class="service-icon">💬</div>
+<h3>WhatsApp Business Setup</h3>
+</div>
+
+
+<div class="service fade">
+<div class="service-icon">📍</div>
+<h3>Google Business Profile</h3>
+</div>
+
+
+<div class="service fade">
+<div class="service-icon">📱</div>
+<h3>Digital Marketing</h3>
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CUSTOMERS -->
+
+<section class="customer-section" id="customers">
+
+<div class="container">
+
+<div class="heading fade">
+
+<small>TARGET CUSTOMERS</small>
+
+<h2>Who We Serve</h2>
+
+<p>
+SBDMS is designed for different types of local and small businesses.
+</p>
+
+</div>
+
+
+<div class="customers fade">
+
+<div class="customer">🏪 Small Retail Shops</div>
+
+<div class="customer">💇 Salons</div>
+
+<div class="customer">🍽️ Restaurants</div>
+
+<div class="customer">🏥 Clinics</div>
+
+<div class="customer">🎓 Tuition Centres</div>
+
+<div class="customer">📦 Small Wholesalers</div>
+
+<div class="customer">🛠️ Local Service Providers</div>
+
+<div class="customer">👨‍👩‍👧 Family-Owned Businesses</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- VALUE PROPOSITION -->
+
+<section>
+
+<div class="container">
+
+<div class="value-box fade">
+
+<h2>Our Value Proposition</h2>
+
+<p>
+“Making digital business management simple, affordable and accessible
+for every small business.”
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section class="contact" id="contact">
+
+<div class="container">
+
+<div class="heading fade">
+
+<small>GET STARTED</small>
+
+<h2>Let's Digitize Your Business</h2>
+
+<p>
+Tell us about your business and the digital support you need.
+</p>
+
+</div>
+
+
+<div class="contact-grid">
+
+
+<div class="contact-info fade">
+
+<h3>SBDMS</h3>
+
+<p>
+Small Business Digital Management Service
+</p>
+
+
+<div class="contact-item">
+
+<strong>📧 Email</strong>
+
+<span>sbdms@example.com</span>
+
+</div>
+
+
+<div class="contact-item">
+
+<strong>📞 Phone</strong>
+
+<span>+91 XXXXX XXXXX</span>
+
+</div>
+
+
+<div class="contact-item">
+
+<strong>📍 Service Area</strong>
+
+<span>Local & Small Businesses</span>
+
+</div>
+
+</div>
+
+
+<form class="fade" onsubmit="sendMessage(event)">
+
+<label>Name</label>
+
+<input
+type="text"
+id="name"
+placeholder="Enter your name"
+required
+>
+
+
+<label>Business Name</label>
+
+<input
+type="text"
+id="business"
+placeholder="Enter your business name"
+required
+>
+
+
+<label>Phone Number</label>
+
+<input
+type="tel"
+id="phone"
+placeholder="Enter your phone number"
+required
+>
+
+
+<label>Message</label>
+
+<textarea
+id="message"
+placeholder="Tell us about your business requirements"
+required>
+</textarea>
+
+
+<button class="btn primary" type="submit">
+Send Enquiry →
+</button>
+
+</form>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<p>
+© <span id="year"></span>
+<strong>SBDMS</strong>
+— Small Business Digital Management Service
+</p>
+
+<p>
+Prepared as an MBA Startup Concept
+</p>
+
+</footer>
+
+
+<script>
+
+/* MOBILE MENU */
+
+function toggleMenu(){
+
+document.getElementById("navLinks")
+.classList.toggle("active");
+
+}
+
+
+/* CONTACT FORM */
+
+function sendMessage(event){
+
+event.preventDefault();
+
+let name =
+document.getElementById("name").value;
+
+let business =
+document.getElementById("business").value;
+
+alert(
+"Thank you " +
+name +
+"! Your enquiry for " +
+business +
+" has been received."
+);
+
+event.target.reset();
+
+}
+
+
+/* YEAR */
+
+document.getElementById("year")
+.textContent = new Date().getFullYear();
+
+
+/* SCROLL ANIMATION */
+
+const observer =
+new IntersectionObserver(
+(entries) => {
+
+entries.forEach(
+(entry) => {
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+});
+
+},
+{
+threshold:0.15
+}
+);
+
+
+document
+.querySelectorAll(".fade")
+.forEach(
+(element) => observer.observe(element)
+);
+
+</script>
+
+</body>
+</html>
